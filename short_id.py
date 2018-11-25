@@ -3,6 +3,7 @@
     Created by prakash on 25/11/18
 """
 from random import random, randrange
+import string
 
 __author__ = 'Prakash14'
 
@@ -10,7 +11,7 @@ __author__ = 'Prakash14'
 START_TIMESTAMP = 1533061800.0
 
 ALPHABET = ''
-ORIGINAL = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'
+ORIGINAL = string.digits + string.ascii_letters + "-_"
 SHUFFLED = None
 SEED = 0
 PREVIOUS_SECONDS = 0
@@ -57,7 +58,7 @@ def __get_shuffled():
     return SHUFFLED
 
 
-def __int_to_base63(num: int):
+def __int_to_base64(num: int):
     """Converts a positive integer into a base36 string."""
     assert num >= 0
     digits = __get_shuffled()
@@ -81,12 +82,12 @@ def short_id(mult=1000):
     if seconds == PREVIOUS_SECONDS:
         seconds += 1
     PREVIOUS_SECONDS = seconds
-    key = __int_to_base63(int(seconds))
-    prfix = __int_to_base63(__get_random_number(500000))
+    key = __int_to_base64(int(seconds))
+    prfix = __int_to_base64(__get_random_number(500000))
     while not prfix.__len__() >= 2:
-        prfix = __int_to_base63(__get_random_number(500000))
+        prfix = __int_to_base64(__get_random_number(500000))
     suffix_len = 2
-    suffix = __int_to_base63(__get_random_number(500000))
+    suffix = __int_to_base64(__get_random_number(500000))
     while not suffix.__len__() >= suffix_len:
-        suffix = __int_to_base63(__get_random_number(500000))
+        suffix = __int_to_base64(__get_random_number(500000))
     return prfix[-2:] + key + suffix[-suffix_len:]
