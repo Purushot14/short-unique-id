@@ -5,7 +5,7 @@
 import time
 from multiprocessing import Process
 
-from short_id import short_id
+from ShortId import short_id
 
 __author__ = 'Prakash14'
 
