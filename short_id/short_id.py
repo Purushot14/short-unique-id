@@ -1,11 +1,11 @@
 # coding=utf-8
 """
-    Created by prakash on 25/11/18
+    Created by Purushot on 25/11/18
 """
 from random import random, randrange
 import string
 
-__author__ = 'Prakash14'
+__author__ = 'Purushot14'
 
 from .snowflake import Snowflake
 
@@ -50,13 +50,13 @@ def _int_to_base64(num: int, is_ordered=True):
     return res
 
 
-def snowflake_id(mult=None):
+def get_next_snowflake_id(mult=None):
     global snowflake
     if mult:
         snowflake.set_mult(mult)
     return snowflake.__next__()
 
 
-def short_id(mult=None, is_ordered=True):
-    _snowflake_id = snowflake_id(mult)
+def generate_short_id(mult=None, is_ordered=True):
+    _snowflake_id = get_next_snowflake_id(mult)
     return _int_to_base64(_snowflake_id, is_ordered)

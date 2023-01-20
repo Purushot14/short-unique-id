@@ -1,18 +1,18 @@
 # coding=utf-8
 """
-    Created by prakash on 25/11/18
+    Created by Purushot on 25/11/18
 """
 import logging
 import time
 import unittest
 from multiprocessing import Process
 
-from short_id import short_id
+from short_id import generate_short_id
 
-__author__ = 'Prakash14'
+__author__ = 'Purushot14'
 
 id_list = []
-dup_dict = []
+dup_dict = {}
 dup_list = []
 
 
@@ -22,7 +22,7 @@ def check_key(range_=1000):
     global dup_list
     # print(id_list, dup_dict, dup_list)
     for i in range(0, range_):
-        ran = short_id()
+        ran = generate_short_id()
 
         if ran in id_list:
             dup_list.append(ran)

@@ -1,6 +1,6 @@
 """
-    Created by prakash at 20/01/23
+    Created by Purushot at 20/01/23
 """
-__author__ = 'Prakash14'
+__author__ = 'Purushot14'
 
-from .short_id import short_id, snowflake_id
+from .short_id import get_next_snowflake_id, generate_short_id

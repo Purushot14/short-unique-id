@@ -1,7 +1,7 @@
 """
-    Created by prakash at 30/11/22
+    Created by Purushot at 30/11/22
 """
-__author__ = 'Prakash14'
+__author__ = 'Purushot14'
 
 import ipaddress
 import logging
