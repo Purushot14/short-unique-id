@@ -22,6 +22,37 @@ snowflake_id :int = short_id.get_next_snowflake_id()
  unique_id :str = short_id.generate_short_id(1000000)
  snowflake_id :int = short_id.get_next_snowflake_id(1000000)
 ```
+
+Development Tools
+________________
+
+### Poetry
+
+This project uses [Poetry](https://python-poetry.org/) for dependency management and packaging:
+
+```bash
+# Install Poetry
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Install project dependencies
+poetry install
+
+# Add new dependency
+poetry add <package-name>
+
+#Ruff
+#Ruff is used for linting, auto-formatting, and import sorting:
+
+
+# Install Ruff
+poetry add --group dev ruff
+
+# Run Ruff for linting and auto-fixing
+poetry run ruff check . --fix
+
+# Format code with Ruff
+poetry run ruff format .
+```
 Running Tests
 
 _____________

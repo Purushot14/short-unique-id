@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Created by Purushot on 25/11/18
 """
@@ -9,7 +8,7 @@ __name__ = "short-unique-id"
 
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md") as fh:
     long_description = fh.read()
 
 setuptools.setup(

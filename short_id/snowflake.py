@@ -8,11 +8,12 @@ import logging
 import os
 import time
 import uuid
-from _socket import gaierror
 from socket import gethostbyname, gethostname
 
 # Wednesday, 1 January 2020 00:00:00 GMT
 from threading import Lock
+
+from _socket import gaierror
 
 start_epoch = 1577817000
 machine_id_bits = 16
@@ -45,7 +46,7 @@ def get_worker_id():
 class Snowflake:
 
     def __init__(self, worker_id=None, mult=10000):
-        logging.info(f"Snowflake init called")
+        logging.info("Snowflake init called")
         self.worker_id = worker_id or get_worker_id()
         self._mult = mult
         self.__last_timestamp = -1

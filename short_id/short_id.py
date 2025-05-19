@@ -1,9 +1,8 @@
-# coding=utf-8
 """
     Created by Purushot on 25/11/18
 """
-from random import random, randrange
 import string
+from random import randrange
 
 __author__ = 'Purushot14'
 

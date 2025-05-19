@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "ShortId"
+version = "0.1.2"
+description = "A Python library for generating short unique IDs and snowflake IDs"
+authors = ["Purushot14 <prakash.purushot@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/Purushot14/ShortId"
+license = "MIT"
+packages = [{include = "short_id"}]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"  # For PEP 625 compliance
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.0"
+pytest = "^7.4.0"
+setuptools = "80.7.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+# Auto-fix capability
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "F",  # pyflakes (removes unused imports)
+    "B",  # flake8-bugbear
+    "I",  # isort (sorts imports)
+    "UP", # pyupgrade for PEP 625 compliance
+    "N",  # pep8-naming
+    "C",  # flake8-comprehensions
+]
+fixable = ["ALL"]
+unfixable = []
+extend-select = ["F401"]
+
+# Import sorting
+[tool.ruff.lint.isort]
+known-first-party = ["short_id"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
