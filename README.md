@@ -5,12 +5,12 @@
 * snowflake id as ordered unique number
 * short id with more unique without order
 
-`short_id` hosted on [PyPI](http://pypi.python.org/pypi/ShortId/) and can be installed as such:
+`short_id` hosted on [PyPI](http://pypi.python.org/pypi/short-unique-id/) and can be installed as such:
 
 
-    pip install install ShortId
+    pip install short-unique-id
 
-Alternatively, you can also get the latest source code from [Github](https://github.com/Purushot14/ShortId) and install it manually.
+Alternatively, you can also get the latest source code from [Github](https://github.com/Purushot14/short-unique-id) and install it manually.
 
 ```python3 
 import short_id
