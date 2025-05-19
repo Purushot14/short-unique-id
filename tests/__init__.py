@@ -7,7 +7,7 @@ import time
 import unittest
 from multiprocessing import Process
 
-from short_id import generate_short_id
+from short_unique_id import generate_short_id
 
 __author__ = "Purushot14"
 

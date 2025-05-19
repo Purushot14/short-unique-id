@@ -8,8 +8,8 @@ import ipaddress
 import logging
 from threading import Thread
 
-from short_id import get_next_snowflake_id
-from short_id.snowflake import Snowflake, get_machine_id
+from short_unique_id import get_next_snowflake_id
+from short_unique_id.snowflake import Snowflake, get_machine_id
 from tests import TestBase
 
 

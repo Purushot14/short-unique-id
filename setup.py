@@ -1,41 +1,59 @@
 """
-    Created by Purushot on 25/11/18
+short-unique-id
+Tiny, dependency-free Snowflake-style and random short-UUID generator for Python.
 """
 
-__author__ = 'Purushot14'
-__version__ = "0.1.2"
-__name__ = "short-unique-id"
+from pathlib import Path
 
-import setuptools
+from setuptools import find_packages, setup
 
-with open("README.md") as fh:
-    long_description = fh.read()
+BASE_DIR = Path(__file__).resolve().parent
+README = (BASE_DIR / "README.md").read_text(encoding="utf-8")
 
-setuptools.setup(
-    name=__name__,  # This is the name of the package
-    version=__version__,
-    author=__author__,  # Full name of the author
-    author_email="prakash.purushoth@gmail.com",
-    description="Short id generator",
-    long_description=long_description,  # Long description read from the the readme file
-    keywords=["short", "id", "uuid", "shortid", "SnowflakeId", "short uuid", "tinyid", "unique id"],
+setup(
+    # ---- Core metadata ----------------------------------------------------
+    name="short-unique-id",  # PyPI project name
+    version="0.2.0",  # bump every release
+    author="Purushot14",
+    author_email="prakash.purushot@gmail.com",
+    description="Tiny, dependency-free Snowflake-style and random short ID generator for Python.",
+    long_description=README,
     long_description_content_type="text/markdown",
-    packages=["short_id"],  # List of all python modules to be installed
-    py_modules=["short_id"],
-    url="https://github.com/Purushot14/ShortId",
     license="MIT",
+    # ---- URLs -------------------------------------------------------------
+    url="https://github.com/Purushot14/short-unique-id",
+    project_urls={
+        "Documentation": "https://github.com/Purushot14/short-unique-id#readme",
+        "Source": "https://github.com/Purushot14/short-unique-id",
+        "Issue Tracker": "https://github.com/Purushot14/short-unique-id/issues",
+    },
+    # ---- Search / filter helpers -----------------------------------------
+    keywords=[
+        "shortid",
+        "short-id",
+        "snowflake",
+        "uuid",
+        "unique-id",
+        "identifier",
+        "id-generator",
+    ],
     classifiers=[
-        "Programming Language :: Python :: 3",
-        "Topic :: Utilities",
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-        'Topic :: Internet :: WWW/HTTP',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-        'Environment :: Web Environment',
-        'Intended Audience :: Developers',
-        "Topic :: Software Development :: Libraries",
-        "Topic :: Software Development :: Code Generators"
-    ],  # Information to filter the project on PyPi website
-    python_requires='>=3.6',  # Minimum version requirement of the package
-    install_requires=[]  # Install other dependencies if any
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Utilities",
+    ],
+    # ---- Packaging options -----------------------------------------------
+    packages=find_packages(include=["short_unique_id", "short_unique_id.*"]),
+    python_requires=">=3.8",
+    install_requires=[],  # add runtime deps here if ever needed
+    include_package_data=True,  # include files tracked by MANIFEST.in
+    zip_safe=False,
 )

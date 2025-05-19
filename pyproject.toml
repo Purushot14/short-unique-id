@@ -1,54 +1,59 @@
 [tool.poetry]
-name = "ShortId"
-version = "0.1.2"
-description = "A Python library for generating short unique IDs and snowflake IDs"
+name = "short-unique-id"                          # PyPI project name
+version = "0.2.0"                                 # bump before every upload
+description = "Tiny, dependency-free Snowflake-style and random short ID generator for Python."
 authors = ["Purushot14 <prakash.purushot@gmail.com>"]
 readme = "README.md"
-repository = "https://github.com/Purushot14/ShortId"
 license = "MIT"
-packages = [{include = "short_id"}]
+
+homepage = "https://github.com/Purushot14/short-unique-id"
+repository = "https://github.com/Purushot14/short-unique-id"
+documentation = "https://github.com/Purushot14/short-unique-id#readme"
+
+keywords = ["shortid", "short-id", "snowflake", "uuid", "unique-id", "identifier"]
+
+# if your package folder is `short_unique_id/`
+packages = [{ include = "short_unique_id" }]
+
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10"  # For PEP 625 compliance
+python = ">=3.8"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.0"
 pytest = "^7.4.0"
 setuptools = "80.7.1"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
 [tool.ruff]
 line-length = 120
-target-version = "py310"
+target-version = "py39"
 
-# Auto-fix capability
 [tool.ruff.lint]
-select = [
-    "E",  # pycodestyle errors
-    "F",  # pyflakes (removes unused imports)
-    "B",  # flake8-bugbear
-    "I",  # isort (sorts imports)
-    "UP", # pyupgrade for PEP 625 compliance
-    "N",  # pep8-naming
-    "C",  # flake8-comprehensions
-]
+select = ["E", "F", "B", "I", "UP", "N", "C"]
 fixable = ["ALL"]
-unfixable = []
 extend-select = ["F401"]
 
-# Import sorting
 [tool.ruff.lint.isort]
-known-first-party = ["short_id"]
+known-first-party = ["short_unique_id"]
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
 line-ending = "auto"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
