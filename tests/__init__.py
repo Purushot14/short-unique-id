@@ -1,5 +1,4 @@
-"""
-Created by Purushot on 25/11/18
+"""Created by Purushot on 25/11/18
 """
 
 import logging
@@ -21,7 +20,7 @@ def check_key(range_=1000):
     global dup_dict
     global dup_list
     # print(id_list, dup_dict, dup_list)
-    for i in range(0, range_):
+    for i in range(range_):
         ran = generate_short_id()
 
         if ran in id_list:
@@ -31,7 +30,7 @@ def check_key(range_=1000):
         id_list.append(ran)
 
 
-for i in range(0, 20):
+for i in range(20):
 
     def p_(_i):
         global dup_dict

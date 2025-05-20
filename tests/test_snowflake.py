@@ -1,5 +1,4 @@
-"""
-Created by Purushot at 30/11/22
+"""Created by Purushot at 30/11/22
 """
 
 __author__ = "Purushot14"

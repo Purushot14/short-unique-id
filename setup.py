@@ -1,5 +1,4 @@
-"""
-short-unique-id
+"""short-unique-id
 Tiny, dependency-free Snowflake-style and random short-UUID generator for Python.
 """
 
