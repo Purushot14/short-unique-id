@@ -14,7 +14,7 @@
 [![CodeQL](https://github.com/Purushot14/short-unique-id/actions/workflows/codeql.yml/badge.svg)](https://github.com/Purushot14/short-unique-id/security/code-scanning)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/)
 
-> **Tiny, dependency-free Snowflake-style _ordered IDs_ and ultra-short random IDs for Python 3.8 +**
+> **Tiny, dependency-free Snowflake-style _ordered IDs_ and ultra-short random IDs for Python 3.9 +**
 
 Need a sortable primary-key like Twitter’s Snowflake, or just a compact URL-safe slug?  
 `short-unique-id` gives you both—without C extensions or heavy dependencies.
@@ -26,7 +26,7 @@ Need a sortable primary-key like Twitter’s Snowflake, or just a compact URL-sa
 - **12-char random IDs** – base-62 tokens for URLs, files, IoT messages, …  
 - **Stateless & thread-safe** – no Redis, no database round-trips  
 - **Zero dependencies** – pure-Python, install in seconds  
-- **Python 3.8 → 3.12** – fully typed, passes pytest & Ruff  
+- **Python 3.9 → 3.13** – fully typed, passes pytest & Ruff  
 - **MIT licensed**
 
 ---
@@ -76,7 +76,7 @@ snowflake = suid.get_next_snowflake_id(mult=1_000_000)
 | `uuid.uuid4()`        | 1.90 ms               | 36        |
 | `ulid-py` (ULID)      | 2.15 ms               | 26        |
 
-<sup>† MacBook M3, Python 3.12, single thread, `timeit.repeat` 5 × 1000.</sup>
+<sup>† MacBook M3, Python 3.13, single thread, `timeit.repeat` 5 × 1000.</sup>
 
 ---
 

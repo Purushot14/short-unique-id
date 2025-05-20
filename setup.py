@@ -51,7 +51,7 @@ setup(
     ],
     # ---- Packaging options -----------------------------------------------
     packages=find_packages(include=["short_unique_id", "short_unique_id.*"]),
-    python_requires=">=3.8",
+    python_requires=">=3.9",
     install_requires=[],  # add runtime deps here if ever needed
     include_package_data=True,  # include files tracked by MANIFEST.in
     zip_safe=False,
