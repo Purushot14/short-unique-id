@@ -49,7 +49,8 @@ fixable = ["ALL"]
 extend-select = ["F401"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["short_unique_id", "_socket"]
+known-first-party = ["short_unique_id"]
+extra-standard-library = ["_socket"]
 
 [tool.ruff.format]
 quote-style = "double"
