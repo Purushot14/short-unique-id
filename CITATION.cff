@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this library, please cite it as below."
 title: "short-unique-id: Snowflake‑style and short random ID generator for Python"
-version: "0.2.0"
+version: "0.2.1"
 doi: "10.5281/zenodo.1234567"
 date-released: 2025-05-19
 url: "https://github.com/Purushot14/short-unique-id"

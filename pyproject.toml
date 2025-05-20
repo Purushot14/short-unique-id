@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "short-unique-id"                          # PyPI project name
-version = "0.2.0"                                 # bump before every upload
+version = "0.2.1"                                 # bump before every upload
 description = "Tiny, dependency-free Snowflake-style and random short ID generator for Python."
 authors = ["Purushot14 <prakash.purushot@gmail.com>"]
 readme = "README.md"

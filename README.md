@@ -131,10 +131,11 @@ poetry run pre-commit run --all-files
 
 See [CHANGELOG](CHANGELOG.md). Notable releases:
 
-| Version   | Date       | Highlights                                                   |
-|-----------|------------|--------------------------------------------------------------|
+| Version   | Date       | Highlights                                                  |
+|-----------|------------|-------------------------------------------------------------|
+| **0.2.1** | 2025-05-20 | Python3.13 support added and Badges added on readme         |
 | **0.2.0** | 2025-05-19 | Repo rename, Poetry build, SEO README, classifiers & keywords |
-| 0.1.2     | 2018-11-25 | Initial public release                                       |
+| 0.1.2     | 2018-11-25 | Initial public release                                      |
 
 ---
 

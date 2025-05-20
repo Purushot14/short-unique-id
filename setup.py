@@ -12,7 +12,7 @@ README = (BASE_DIR / "README.md").read_text(encoding="utf-8")
 setup(
     # ---- Core metadata ----------------------------------------------------
     name="short-unique-id",  # PyPI project name
-    version="0.2.0",  # bump every release
+    version="0.2.1",  # bump every release
     author="Purushot14",
     author_email="prakash.purushot@gmail.com",
     description="Tiny, dependency-free Snowflake-style and random short ID generator for Python.",
