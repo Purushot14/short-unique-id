@@ -2,11 +2,13 @@
 """
 
 import logging
-import time
-import unittest
-from multiprocessing import Process
 
-from short_unique_id import generate_short_id
+# import time
+import unittest
+
+# from multiprocessing import Process
+
+# from short_unique_id import generate_short_id
 
 __author__ = "Purushot14"
 
@@ -15,46 +17,46 @@ dup_dict = {}
 dup_list = []
 
 
-def check_key(range_=1000):
-    global id_list
-    global dup_dict
-    global dup_list
-    # print(id_list, dup_dict, dup_list)
-    for i in range(range_):
-        ran = generate_short_id()
-
-        if ran in id_list:
-            dup_list.append(ran)
-            dup_dict.setdefault(str(ran), {}).setdefault("pos", []).append(i)
-            dup_dict[str(ran)]["count"] = dup_dict[str(ran)].get("count", 0) + 1
-        id_list.append(ran)
-
-
-for i in range(20):
-
-    def p_(_i):
-        global dup_dict
-        global random_list
-        global dup_list
-        dup_dict = {}
-        random_list = []
-        dup_list = []
-        val = _i * 1000
-        start = time.time()
-        check_key(val)
-        print(
-            val,
-            " Key LEN : ",
-            dup_dict.keys().__len__(),
-            "Total: ",
-            dup_list.__len__(),
-            "Execute Time : ",
-            time.time() - start,
-        )
-
-    p_(i)
-    p = Process(target=p_, args=(i,))
-    p.start()
+# def check_key(range_=1000):
+#     global id_list
+#     global dup_dict
+#     global dup_list
+#     # print(id_list, dup_dict, dup_list)
+#     for i in range(range_):
+#         ran = generate_short_id()
+#
+#         if ran in id_list:
+#             dup_list.append(ran)
+#             dup_dict.setdefault(str(ran), {}).setdefault("pos", []).append(i)
+#             dup_dict[str(ran)]["count"] = dup_dict[str(ran)].get("count", 0) + 1
+#         id_list.append(ran)
+#
+#
+# for i in range(20):
+#
+#     def p_(_i):
+#         global dup_dict
+#         global random_list
+#         global dup_list
+#         dup_dict = {}
+#         random_list = []
+#         dup_list = []
+#         val = _i * 1000
+#         start = time.time()
+#         check_key(val)
+#         print(
+#             val,
+#             " Key LEN : ",
+#             dup_dict.keys().__len__(),
+#             "Total: ",
+#             dup_list.__len__(),
+#             "Execute Time : ",
+#             time.time() - start,
+#         )
+#
+#     p_(i)
+#     p = Process(target=p_, args=(i,))
+#     p.start()
 
 
 class TestBase(unittest.TestCase):

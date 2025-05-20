@@ -1,4 +1,5 @@
-"""Created by Purushot at 30/11/22
+"""
+Created by Purushot at 30/11/22
 """
 
 __author__ = "Purushot14"
@@ -75,3 +76,11 @@ class TestSnowflake(TestBase):
         self.assertEqual(set(snowflake_ids).__len__(), snowflake_ids.__len__())
         for i, val in enumerate(snowflake_ids[1:]):
             self.assertGreater(val, snowflake_ids[i])
+
+    def test_negative_cases(self):
+        snowflake = Snowflake()
+        self.assertRaises(ValueError, snowflake.set_mult, -1)
+        self.assertRaises(ValueError, snowflake.set_mult, False)
+
+        snowflake_id = snowflake.__iter__().__next__()
+        self.assertIsInstance(snowflake_id, int)

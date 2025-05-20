@@ -1,5 +1,5 @@
-"""Created by Purushot at 30/11/22
-"""
+"""Created by Purushot at 30/11/22"""
+
 __author__ = "Purushot14"
 
 import ipaddress
@@ -7,13 +7,11 @@ import logging
 import os
 import time
 import uuid
+from _socket import gaierror
 from socket import gethostbyname, gethostname
-
-# Wednesday, 1 January 2020 00:00:00 GMT
 from threading import Lock
 
-from _socket import gaierror
-
+# Wednesday, 1 January 2020 00:00:00 GMT
 start_epoch = 1577817000
 machine_id_bits = 16
 process_id_bits = 8
@@ -43,7 +41,6 @@ def get_worker_id():
 
 
 class Snowflake:
-
     def __init__(self, worker_id=None, mult=10000):
         logging.info("Snowflake init called")
         self.worker_id = worker_id or get_worker_id()
@@ -53,14 +50,19 @@ class Snowflake:
         self._lock = Lock()
 
     def set_mult(self, mult):
-        self._mult = mult
-        time.sleep(1/mult)
+        if isinstance(mult, int) and mult > 0:
+            self._mult = mult
+            time.sleep(1 / mult)
+        else:
+            raise ValueError("mult must be a positive integer")
 
     @property
-    def start_epoch(self): return start_epoch * self._mult
+    def start_epoch(self):
+        return start_epoch * self._mult
 
     @property
-    def current_time(self) -> int: return int(self._mult * time.time())
+    def current_time(self) -> int:
+        return int(self._mult * time.time())
 
     def _next_id(self):
         current_time = self.current_time

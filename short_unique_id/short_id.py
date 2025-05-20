@@ -1,5 +1,5 @@
-"""Created by Purushot on 25/11/18
-"""
+"""Created by Purushot on 25/11/18"""
+
 import string
 from random import randrange
 
@@ -7,14 +7,16 @@ __author__ = "Purushot14"
 
 from .snowflake import Snowflake
 
-ORIGINAL = string.digits + string.ascii_letters + "-_"
+# This original was ordered by ascii code, here `-` was 45, digits are between 48 and 57,
+# upper alphabets were between 65 and 90, `_` was 95 and lower alphabets were between 97 and 122
+ORIGINAL = "-" + string.digits + string.ascii_uppercase + "_" + string.ascii_lowercase
+
 SHUFFLED = None
 snowflake = Snowflake()
 
 
 def _shuffle():
-    """:return:
-    """
+    """:return:"""
     source_str = ORIGINAL
     target_str = ""
 
