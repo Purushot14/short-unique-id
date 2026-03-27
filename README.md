@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/short-unique-id.svg)](https://pypi.org/project/short-unique-id/)
 [![PyPI - Wheel](https://img.shields.io/pypi/wheel/short-unique-id.svg)](https://pypi.org/project/short-unique-id/#files)
-[![Lines of Code](https://img.shields.io/tokei/lines/github/Purushot14/short-unique-id)](https://github.com/XAMPPRocky/tokei)
+[![Lines of Code](https://sloc.xyz/github/Purushot14/short-unique-id)](https://github.com/Purushot14/short-unique-id)
 [![Code Style: Ruff](https://img.shields.io/badge/code%20style-ruff-blueviolet)](https://docs.astral.sh/ruff/)
 [![Coverage](https://img.shields.io/codecov/c/github/Purushot14/short-unique-id/main.svg?logo=codecov)](https://app.codecov.io/gh/Purushot14/short-unique-id)
 [![GitHub Release Date](https://img.shields.io/github/release-date/Purushot14/short-unique-id.svg)](https://github.com/Purushot14/short-unique-id/releases)
@@ -14,19 +14,20 @@
 [![CodeQL](https://github.com/Purushot14/short-unique-id/actions/workflows/codeql.yml/badge.svg)](https://github.com/Purushot14/short-unique-id/security/code-scanning)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/)
 
-> **Tiny, dependency-free Snowflake-style _ordered IDs_ and ultra-short random IDs for Python 3.9 +**
+> **Tiny, dependency-free Snowflake-style _ordered IDs_ and ultra-short unique IDs for Python 3.9+**
 
-Need a sortable primary-key like Twitter’s Snowflake, or just a compact URL-safe slug?  
+Need a sortable primary-key like Twitter’s Snowflake, or just a compact URL-safe slug?
 `short-unique-id` gives you both—without C extensions or heavy dependencies.
 
 ---
 
 ## ✨ Features
-- **Ordered Snowflake IDs** – 64-bit, millisecond-precision, monotonic & k-sortable  
-- **12-char random IDs** – base-62 tokens for URLs, files, IoT messages, …  
-- **Stateless & thread-safe** – no Redis, no database round-trips  
-- **Zero dependencies** – pure-Python, install in seconds  
-- **Python 3.9 → 3.13** – fully typed, passes pytest & Ruff  
+- **Ordered Snowflake IDs** – 64-bit, monotonic & k-sortable (100 μs precision at default `mult`)
+- **Short base-64 string IDs** – compact, URL-safe tokens for URLs, files, IoT messages, …
+- **Sortable or shuffled** – ordered alphabet for lexicographic sort, or shuffled alphabet for opaque tokens
+- **Stateless & thread-safe** – no Redis, no database round-trips
+- **Zero dependencies** – pure-Python, install in seconds
+- **Python 3.9 → 3.14** – fully typed, passes pytest & Ruff
 - **MIT licensed**
 
 ---
@@ -50,16 +51,20 @@ pip install git+https://github.com/Purushot14/short-unique-id.git
 ```python
 import short_unique_id as suid
 
-# 12-character, URL-safe string (random)
+# URL-safe, lexicographically sortable string (default is_ordered=True)
 slug = suid.generate_short_id()
-print(slug)             # → "aZ8Ft1jK2L3q"
+print(slug)             # → "1vAo4-1g-1---"
+
+# Opaque token using shuffled alphabet
+token = suid.generate_short_id(is_ordered=False)
+print(token)            # → "qZ8Ft1jK2L3R"
 
 # Ordered, 64-bit Snowflake integer
 snowflake = suid.get_next_snowflake_id()
 print(snowflake)        # → 489683493715968001
 ```
 
-Need higher entropy or longer range? Pass a custom `mult` (time multiplier):
+Need higher precision or longer range? Pass a custom `mult` (ticks per second):
 
 ```python
 slug      = suid.generate_short_id(mult=1_000_000)
@@ -72,7 +77,7 @@ snowflake = suid.get_next_snowflake_id(mult=1_000_000)
 
 | Generator             | Mean time / 1 000 ids | Bytes / id |
 |-----------------------|-----------------------|-----------|
-| **short-unique-id**   | **0.75 ms**           | 12        |
+| **short-unique-id**   | **0.75 ms**           | ~11–13    |
 | `uuid.uuid4()`        | 1.90 ms               | 36        |
 | `ulid-py` (ULID)      | 2.15 ms               | 26        |
 
@@ -84,8 +89,8 @@ snowflake = suid.get_next_snowflake_id(mult=1_000_000)
 
 | Function | Returns | Description | Key Args |
 |----------|---------|-------------|----------|
-| `generate_short_id(mult: int = 10_000) → str` | 12-char base‑62 string | Random but unique within the given time bucket. | `mult` – bucket size (↑ = ↑ entropy) |
-| `get_next_snowflake_id(mult: int = 10_000) → int` | 64-bit int | Monotonic, timestamp‑encoded Snowflake ID. | `mult` – ticks per ms |
+| `generate_short_id(mult=None, is_ordered=True) → str` | base‑64 string | Snowflake ID encoded as a compact string. Sortable by default; pass `is_ordered=False` for an opaque token. | `mult` – ticks per second (default 10 000); `is_ordered` – use ASCII-ordered alphabet |
+| `get_next_snowflake_id(mult=None) → int` | 64-bit int | Monotonic, timestamp‑encoded Snowflake ID. | `mult` – ticks per second (default 10 000) |
 
 ---
 
@@ -129,7 +134,7 @@ poetry run pre-commit run --all-files
 
 ## 📝 Changelog
 
-See [CHANGELOG](CHANGELOG.md). Notable releases:
+Notable releases:
 
 | Version   | Date       | Highlights                                                  |
 |-----------|------------|-------------------------------------------------------------|
