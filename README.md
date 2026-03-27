@@ -138,6 +138,7 @@ Notable releases:
 
 | Version   | Date       | Highlights                                                  |
 |-----------|------------|-------------------------------------------------------------|
+| **0.3.0** | 2026-03-27 | Fix duplicate ID bug (bit-layout), base-64 encoding fix, Python 3.14 support, release CI/CD pipeline |
 | **0.2.1** | 2025-05-20 | Python3.13 support added and Badges added on readme         |
 | **0.2.0** | 2025-05-19 | Repo rename, Poetry build, SEO README, classifiers & keywords |
 | 0.1.2     | 2018-11-25 | Initial public release                                      |
