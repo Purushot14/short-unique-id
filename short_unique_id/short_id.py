@@ -37,13 +37,13 @@ def _get_shuffled():
 
 
 def _int_to_base64(num: int, is_ordered=True):
-    """Converts a positive integer into a base36 string."""
+    """Converts a positive integer into a base-64 string."""
     assert num >= 0
     alphabets = ORIGINAL if is_ordered else _get_shuffled()
 
     res = ""
     while not res or num > 0:
-        num, i = divmod(num, 63)
+        num, i = divmod(num, 64)
         res = alphabets[i] + res
     return res
 

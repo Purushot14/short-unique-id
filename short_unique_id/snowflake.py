@@ -37,7 +37,7 @@ def get_process_id():
 
 
 def get_worker_id():
-    return get_machine_id() | get_process_id()
+    return (get_process_id() << machine_id_bits) | get_machine_id()
 
 
 class Snowflake:
@@ -75,7 +75,7 @@ class Snowflake:
         else:
             self.__sequence = 0
         self.__last_timestamp = current_time
-        sequence = self.__sequence << machine_id_bits
+        sequence = self.__sequence << (machine_id_bits + process_id_bits)
         return ((current_time - self.start_epoch) << timestamp_left_shift) | self.worker_id | sequence
 
     def get_next_id(self):
